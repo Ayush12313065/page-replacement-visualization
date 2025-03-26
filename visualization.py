@@ -30,4 +30,10 @@ class PageReplacementGUI:
             time.sleep(1)  # Simulating delay
             self.frame_display.config(text=f"Current Page: {page}")
             self.root.update()
+        if page in memory:
+            color = "green"  # Hit
+        else:
+            color = "red"    # Fault
+        self.frame_display.config(fg=color)
+
 
