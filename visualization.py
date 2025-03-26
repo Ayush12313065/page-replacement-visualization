@@ -15,6 +15,19 @@ class PageReplacementGUI:
         self.start_button = tk.Button(root, text="Start Simulation", command=self.start_simulation)
         self.start_button.pack(pady=5)
 
+        self.frame_display = tk.Label(root, text="", font=("Arial", 12))
+        self.frame_display.pack(pady=10)
+
     def start_simulation(self):
         reference_string = list(map(int, self.ref_string_entry.get().split(',')))
-        print(f"Reference String: {reference_string}")
+        self.frame_display.config(text=f"Processing: {reference_string}")
+
+    import time
+
+    def step_by_step_display(self, reference_string):
+        self.frame_display.config(text="Processing...")
+        for page in reference_string:
+            time.sleep(1)  # Simulating delay
+            self.frame_display.config(text=f"Current Page: {page}")
+            self.root.update()
+
